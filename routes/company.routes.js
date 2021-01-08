@@ -6,7 +6,8 @@ const companyController = require('../controllers/company.controller');
 
 module.exports = function() {
 
-   router.get('/company', companyController.obtenerCompanys);
+   // Ruta para obtener todas las companys
+   router.get('/company', companyController.mostrarCompanys);
 
 
    return router;

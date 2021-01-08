@@ -1,4 +1,4 @@
 
-exports.obtenerCompanys = (req, res) => {
+exports.mostrarCompanys = (req, res) => {
    res.send('Company Principal');
 }
