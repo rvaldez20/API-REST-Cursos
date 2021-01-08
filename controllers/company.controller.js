@@ -10,7 +10,6 @@ exports.getCompanys = async (req, res, next) => {
          attributes: ['id_company', 'nom_company', 'pais']
       });
 
-      // console.log(companys);
       res.json(companys);
       
    } catch (error) {
@@ -23,7 +22,6 @@ exports.getCompanys = async (req, res, next) => {
 // Obtiene una compañy por ID
 exports.getCompany = async (req, res, next) => {   
    try {
-      // obtenemos el idCompany
       const { idCompany } = req.params;
 
       const company = await Company.findOne({
