@@ -46,13 +46,31 @@ exports.getCompany = async (req, res, next) => {
 }
 
 // Para agregra un anueva company
-exports.addCompany = async (req, res, next) => {
-   
+exports.addCompany = async (req, res, next) => {   
    const {nom_company, pais} = req.body;
    try {
       await Company.create({ nom_company, pais });
       res.json({ message: 'La Campañia se guado correctamente' });
       
+   } catch (error) {
+      console.log(error);
+      next();
+   }
+}
+
+// Para actualizar una company
+exports.updateCompany = async (req, res, next) => {
+   const { nom_company, pais } = req.body;   
+   const { idCompany } = req.params;
+
+   try {
+      await Company.update({ nom_company, pais },{
+         where: {
+            id_company: idCompany
+         }
+      });
+
+      res.json({ message: 'La compañia se actualizo correctamente' });
    } catch (error) {
       console.log(error);
       next();

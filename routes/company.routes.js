@@ -15,5 +15,8 @@ module.exports = function() {
    // Route para Agregar una company
    router.post('/company/add', companyController.addCompany);
 
+   // Route para actualizar una company por ID
+   router.put('/company/:idCompany', companyController.updateCompany);
+
    return router;
 }
