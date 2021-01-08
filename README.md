@@ -1,5 +1,8 @@
 # REST API Cursos
 Rest API para una aplicación de cursos online
 
-## end-points
-- **company**:  
+## Create
+- Node JS
+- Express
+- DataBase MySQL
+- ORM Sequelize
