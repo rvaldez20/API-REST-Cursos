@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // Se requieren las routes
 const routes = require('./routes/index.routes');
@@ -17,6 +18,10 @@ db.sync()
    .catch(error => console.log(error));
 
 const app = express();
+
+// habilitamos el bodyParser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Rutas de la app
 app.use('/', routes());
