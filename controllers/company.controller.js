@@ -76,3 +76,21 @@ exports.updateCompany = async (req, res, next) => {
       next();
    }
 }
+
+// Para eliminar una company
+exports.deleteCompany = async (req, res, next) => {
+   const { idCompany } = req.params;
+
+   try {
+      await Company.destroy({
+         where: {
+            id_company: idCompany
+         }
+      });
+
+      res.json({ message: 'La compañia ha sido eliminada correctamente' });
+   } catch (error) {
+      console.log(error);
+      next();
+   }
+}
