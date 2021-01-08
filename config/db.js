@@ -1,12 +1,11 @@
 const { Sequelize } = require('sequelize');
 
-const db = new Sequelize('api_cursos2', 'root', '6038987210', {
+const dbConection = new Sequelize('api_cursos2', 'root', '6038987210', {
    host: 'localhost',
    dialect: 'mysql',
-   operatorsAliases: false,
    port: '3306',
    define: {
-      timestamps: true
+      timestamps: false
    },
    pool: {
       max: 5,
@@ -16,4 +15,4 @@ const db = new Sequelize('api_cursos2', 'root', '6038987210', {
    }
 });
 
-module.exports = db;
+module.exports = dbConection;
