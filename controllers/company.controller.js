@@ -43,5 +43,18 @@ exports.getCompany = async (req, res, next) => {
       console.log(error);
       next();
    }
+}
 
+// Para agregra un anueva company
+exports.addCompany = async (req, res, next) => {
+   
+   const {nom_company, pais} = req.body;
+   try {
+      await Company.create({ nom_company, pais });
+      res.json({ message: 'La Campañia se guado correctamente' });
+      
+   } catch (error) {
+      console.log(error);
+      next();
+   }
 }
