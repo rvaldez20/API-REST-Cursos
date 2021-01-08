@@ -64,6 +64,17 @@ exports.updateCompany = async (req, res, next) => {
    const { idCompany } = req.params;
 
    try {
+      const company = await Company.findOne({
+         where: {
+            id_company: idCompany
+         }
+      });
+
+      if(!company) {
+         res.json({ message: 'La compañia que desea actualizar no existe' });
+         return next();
+      }
+
       await Company.update({ nom_company, pais },{
          where: {
             id_company: idCompany
@@ -82,6 +93,17 @@ exports.deleteCompany = async (req, res, next) => {
    const { idCompany } = req.params;
 
    try {
+      const company = await Company.findOne({
+         where: {
+            id_company: idCompany
+         }
+      });
+
+      if(!company) {
+         res.json({ message: 'La compañia que desea eliminar no existe' });
+         return next();
+      }
+
       await Company.destroy({
          where: {
             id_company: idCompany
