@@ -6,10 +6,11 @@ const companyController = require('../controllers/company.controller');
 
 module.exports = function() {
 
-   // Ruta para obtener todas las companys
-   router.get('/company', companyController.mostrarCompanys);
+   // Route para obtener todas las companys
+   router.get('/company', companyController.getCompanys);
 
-
+   // Route para obtener una company por ID
+   router.get('/company/:idCompany', companyController.getCompany);
 
    return router;
 }
