@@ -9,7 +9,7 @@ exports.getCompanys = async (req, res, next) => {
       const companys = await Company.findAll({
          attributes: ['id_company', 'nom_company', 'pais']
       });
-
+ 
       res.json(companys);
       
    } catch (error) {
