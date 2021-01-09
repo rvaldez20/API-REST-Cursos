@@ -1,4 +1,4 @@
 
-exports.mostrarCourses = (req, res) => {
+exports.getCourses = (req, res) => {
    res.send('Courses Principal');
 }

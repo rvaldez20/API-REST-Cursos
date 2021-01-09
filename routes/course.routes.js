@@ -7,7 +7,7 @@ const courseController = require('../controllers/course.controller');
 module.exports = function() {
 
    // Ruta para obtener todos los courses
-   router.get('/course', courseController.mostrarCourses);
+   router.get('/course', courseController.getCourses);
 
 
    return router;
