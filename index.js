@@ -11,6 +11,7 @@ const db = require('./config/db');
 
 // importamos el modelo
 require('./models/Company');
+require('./models/Course');
 
 // con db.authenticate() solo se conecta
 db.sync()
