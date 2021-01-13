@@ -7,7 +7,7 @@ exports.getCompanys = async (req, res, next) => {
 
    try {
       const companys = await Company.findAll({
-         attributes: ['id_company', 'nom_company', 'pais']
+         attributes: ['id', 'name', 'contry']
       });
  
       res.json(companys);
@@ -26,7 +26,7 @@ exports.getCompany = async (req, res, next) => {
 
       const company = await Company.findOne({
          where: {
-            id_company: idCompany
+            id: idCompany
          }
       })
 
@@ -45,9 +45,9 @@ exports.getCompany = async (req, res, next) => {
 
 // Para agregra un anueva company
 exports.addCompany = async (req, res, next) => {   
-   const {nom_company, pais} = req.body;
+   const { name, contry } = req.body;
    try {
-      await Company.create({ nom_company, pais });
+      await Company.create({ name, contry });
       res.json({ message: 'La Campañia se guado correctamente' });
       
    } catch (error) {
@@ -58,13 +58,13 @@ exports.addCompany = async (req, res, next) => {
 
 // Para actualizar una company
 exports.updateCompany = async (req, res, next) => {
-   const { nom_company, pais } = req.body;   
+   const { name, contry } = req.body;   
    const { idCompany } = req.params;
 
    try {
       const company = await Company.findOne({
          where: {
-            id_company: idCompany
+            id: idCompany
          }
       });
 
@@ -75,7 +75,7 @@ exports.updateCompany = async (req, res, next) => {
 
       await Company.update({ nom_company, pais },{
          where: {
-            id_company: idCompany
+            id: idCompany
          }
       });
 
@@ -93,7 +93,7 @@ exports.deleteCompany = async (req, res, next) => {
    try {
       const company = await Company.findOne({
          where: {
-            id_company: idCompany
+            id: idCompany
          }
       });
 
@@ -104,7 +104,7 @@ exports.deleteCompany = async (req, res, next) => {
 
       await Company.destroy({
          where: {
-            id_company: idCompany
+            id: idCompany
          }
       });
 
