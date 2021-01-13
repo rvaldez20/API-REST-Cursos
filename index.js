@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/index.routes');
 const routesCompany = require('./routes/company.routes');
 const routesCourse = require('./routes/course.routes');
+const routesInstructor = require('./routes/instructor.routes');
 
 // Conexión de a la DB
 const db = require('./config/db');
@@ -12,6 +13,7 @@ const db = require('./config/db');
 // importamos el modelo
 require('./models/Company');
 require('./models/Course');
+require('./models/Instructor');
 
 // con db.authenticate() solo se conecta
 db.sync()
@@ -26,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Rutas de la app
 app.use('/', routes());
+app.use('/', routesInstructor());
 app.use('/', routesCompany());
 app.use('/', routesCourse());
 
