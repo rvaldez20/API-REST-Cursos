@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/db');
 
 const Company = require('./Company');
+const Instructor = require('./Instructor');
 
 const Course = db.define('course', {
    id:  {
@@ -29,5 +30,7 @@ const Course = db.define('course', {
 
 // agregara el campo de la forean key (companyId)
 Course.belongsTo(Company);
+Course.belongsTo(Instructor);
+
 
 module.exports = Course;
