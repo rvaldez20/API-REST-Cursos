@@ -1,18 +1,20 @@
 const Course = require('../models/Course');
 const Company = require('../models/Company');
+const Instructor = require('../models/Instructor');
 
 exports.getCourses = async (req, res, next) => {
    try {
       // con include obtenemos la informacion de la compañia
       const courses = await Course.findAll({
-         include: Company
+         attributes: ["id", "name", "tags"],
+         include: [Company, Instructor]
       });
 
       if (!courses) {
          res.json({ message: 'No existen cursos en la DB' });
       }
-
-      res.json(courses);      
+      
+      res.json(courses);
    } catch (error) {
       console.log(error);
       next();
