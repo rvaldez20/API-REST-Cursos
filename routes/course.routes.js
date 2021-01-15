@@ -18,6 +18,8 @@ module.exports = function() {
    // Ruta para actualizar un course
    router.put('/course/:idCourse', courseController.updateCourse);
 
+   // Ruta para eliminar un course
+   router.delete('/course/:idCourse', courseController.deleteCourse);
 
    return router;
 }

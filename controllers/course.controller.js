@@ -138,3 +138,27 @@ exports.updateCourse = async (req, res, next) => {
       next();
    }
 }
+
+// Para eliminar un curso
+exports.deleteCourse = async (req, res, next) => {
+   const { idCourse } = req.params;
+
+   try {
+      const course = await Course.findOne({ where: {id: idCourse} });
+      if(!course) {
+         res.json({ message: 'El curso que desea actualizar no esta registrado' });
+         return next();
+      }
+
+      const resultado = await Course.destroy({ where: {id: idCourse} });
+      if(!resultado) {
+         res.json({ message: 'Error inesperado, no se pudo eliminar el curso' });
+         return next();
+      }
+
+      res.json({ message: 'El curso se elimino correctamente' })
+   } catch (error) {
+      console.log(error);
+      next();
+   }
+}
