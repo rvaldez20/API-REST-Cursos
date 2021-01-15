@@ -9,6 +9,9 @@ module.exports = function() {
    // Ruta para obtener todos los cursos
    router.get('/course', courseController.getCourses);
 
+   // Ruta para obtener un curso por ID
+   router.get('/course/:idCourse', courseController.getCourse);
+
    // Ruta para agregar un course 
    router.post('/course', courseController.addCourse);
 
