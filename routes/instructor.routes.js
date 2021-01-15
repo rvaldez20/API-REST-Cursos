@@ -14,8 +14,8 @@ module.exports = function () {
    // Ruta para agregar un instructor
    router.post('/instructor', instructorController.addInstructor);
 
-   
-
+   // Ruta para actualizar un isntructor por ID
+   router.put('/instructor/:idInstructor', instructorController.updateInstructor);
 
    return router;
 }

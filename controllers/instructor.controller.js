@@ -44,3 +44,33 @@ exports.addInstructor = async (req, res, next) => {
       next();
    }
 }
+
+// Para actualizar un instructor por ID
+exports.updateInstructor = async (req, res, next) => {
+   const { name, url } = req.body;
+   const { idInstructor } = req.params;
+
+   try {
+      const instructor = await Instructor.findOne({
+         where: {
+            id: idInstructor
+         }
+      });
+
+      if(!instructor) {
+         res.json({ message: 'El instructor que desea actualizar no esta registrado'});
+         return next();
+      }
+
+      await Instructor.update({ name, url }, {
+         where: {
+            id: idInstructor
+         }
+      });
+
+      res.json({ message: 'El instructor se actualizao correctamente'});
+   } catch (error) {
+      console.log(error);
+      next();
+   }
+}
