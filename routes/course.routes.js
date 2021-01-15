@@ -15,6 +15,9 @@ module.exports = function() {
    // Ruta para agregar un course 
    router.post('/course', courseController.addCourse);
 
+   // Ruta para actualizar un course
+   router.put('/course/:idCourse', courseController.updateCourse);
+
 
    return router;
 }
