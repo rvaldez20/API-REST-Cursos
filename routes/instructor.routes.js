@@ -17,5 +17,8 @@ module.exports = function () {
    // Ruta para actualizar un isntructor por ID
    router.put('/instructor/:idInstructor', instructorController.updateInstructor);
 
+   // Ruta para eliminar un instructor por ID
+   router.delete('/instructor/:idInstructor', instructorController.deleteInstructor);
+
    return router;
 }

@@ -74,3 +74,31 @@ exports.updateInstructor = async (req, res, next) => {
       next();
    }
 }
+
+// Para eliminar un instructor por ID
+exports.deleteInstructor = async (req, res, next) => {
+   const { idInstructor } = req.params;
+   try {
+      const instructor = await Instructor.findOne({
+         where: {
+            id: idInstructor
+         }
+      });
+
+      if(!instructor) {
+         res.json({ message: 'El instructor que desea eliminar no esta registrado' });
+         return next();
+      }
+
+      await Instructor.destroy({
+         where: {
+            id: idInstructor
+         }
+      });
+
+      res.json({ message: 'El instructor se elimino correctamente'});
+   } catch (error) {
+      console.log(error);
+      next();
+   }
+}
