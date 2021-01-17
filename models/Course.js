@@ -1,6 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/db');
 
+const slug = require('slug');
+
 const Company = require('./Company');
 const Instructor = require('./Instructor');
 
@@ -13,6 +15,10 @@ const Course = db.define('course', {
    name: {
       type: DataTypes.STRING(120),
       allowNull: false,
+   },
+   nameSlug: {
+      type: DataTypes.STRING(120),
+      allowNull: false
    },
    tags: {
       type: DataTypes.STRING,

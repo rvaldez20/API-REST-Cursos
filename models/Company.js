@@ -11,6 +11,10 @@ const Company = db.define('company', {
       type: DataTypes.STRING(120),  
       allowNull: false    
    },
+   nameSlug: {
+      type: DataTypes.STRING(120),
+      allowNull: false
+   },
    contry: {
       type: DataTypes.STRING(120),
       allowNull: true

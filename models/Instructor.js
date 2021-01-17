@@ -11,6 +11,10 @@ const Instructor = db.define('instructor', {
       type: DataTypes.STRING(120),
       allowNull: false
    },
+   nameSlug: {
+      type: DataTypes.STRING(120),
+      allowNull: false
+   },
    url: {
       type: DataTypes.STRING(150),
       allowNull: false
