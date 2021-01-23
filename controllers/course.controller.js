@@ -1,3 +1,5 @@
+const slug = require('slug');
+
 const Course = require('../models/Course');
 const Company = require('../models/Company');
 const Instructor = require('../models/Instructor');
@@ -157,6 +159,50 @@ exports.deleteCourse = async (req, res, next) => {
       }
 
       res.json({ message: 'El curso se elimino correctamente' })
+   } catch (error) {
+      console.log(error);
+      next();
+   }
+}
+
+/* ------------------ PARA RUTAS AVANZADAS ---------------------- */
+
+// Para obtener todos los courses de una compañia
+exports.getCourseByCompany = async (req, res, next) => {
+   const { nameCompany } = req.params;
+   try {
+      const nameCompanySlug = slug(nameCompany);
+      console.log(nameCompanySlug);
+
+      // buscamos el id de la company
+      const company = await Company.findOne({        
+         where: {
+            nameSlug: nameCompanySlug
+         }
+      });
+
+      if(!company) {
+         res.json({ message: 'La compañia no esta registrada'});
+         return next();
+      }
+
+      // obtenemos el idCompany
+      // console.log(company.id);
+
+      // buscamos los cursos relacionados con la compañia
+      const courses = await Course.findAll({
+         include: [Company, Instructor],
+         where: {
+            companyId: company.id
+         }
+      });
+
+      if(!courses) {
+         res.json({message: 'No hay cursos relacionados con esa compañia'});
+         return next();
+      }
+
+      res.json(courses);
    } catch (error) {
       console.log(error);
       next();

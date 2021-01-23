@@ -21,5 +21,10 @@ module.exports = function() {
    // Ruta para eliminar un course
    router.delete('/course/:idCourse', courseController.deleteCourse);
 
+   // ROUTES AVANZADAS
+
+   // Ruta para obtener todos los cursos de una compañia
+   router.get('/course/company/:nameCompany', courseController.getCourseByCompany);
+
    return router;
 }
